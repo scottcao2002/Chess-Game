@@ -13,3 +13,9 @@ asks if you want the white or black pieces. For the one player game, the AI uses
 on any of your pieces on your turn will highlight the piece, and the spaces where that piece can move is also highlighted in blue. In 1 player mode, the opponent's previous move is
 highlighted in purple. If a king is in check, it is highlighted in red. Each move (with the move number) is printed as the output in case you want to go back and check your previous
 moves and/or mistakes.
+
+
+
+# Background music
+Unfortunately, the Background1 and Background4 files were too big to include on Github. However, if you wanted to add your own music, you just have to add their names to the array
+titled "background" under the function playBackground().
