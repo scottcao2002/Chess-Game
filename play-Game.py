@@ -1,3 +1,4 @@
+#initializes the game
 pygame.init()
 screen_width = 600
 screen_height = 650
@@ -9,6 +10,7 @@ onePlayerButton = screenButton((255, 100, 180), 175, 225, 250, 100, "1 Player")
 twoPlayerButton = screenButton((255, 100, 180), 175, 425, 250, 100, "2 Player")
 side = 0
 choosePlayer = True
+#choose whether 1 or 2 player
 while choosePlayer:
     redrawPlayerWindow()
     pygame.display.update()
@@ -31,6 +33,7 @@ while choosePlayer:
 buttonWhite = screenButton((255, 100, 180), 20, 300, 200, 100, "White")
 buttonBlack = screenButton((255, 100, 180), 350, 300, 200, 100, "Black")
 begin = True
+#choose white or black pieces
 while begin:
     redrawBeginningWindow()
     pygame.display.update()
@@ -56,6 +59,7 @@ run = True
 PPlayer = HumanPlayer()
 POpponent = Opponent()
 playBackground()
+#starts the game
 a = 1
 moves = 0
 if side == 0:
