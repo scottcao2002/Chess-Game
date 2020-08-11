@@ -1,3 +1,4 @@
+#creates classes for each of the pieces
 class Knight:
     global chessboard
     def __init__(self, row, column, player, ID):
@@ -20,10 +21,11 @@ class Knight:
         possibilities = chessboard[self.row][self.column].KnightCanMove()
         return possibilities
     def AttackPossibilities(self):
-        #returns the
+        #returns the possibilities of where it can attack
         possibilities = chessboard[self.row][self.column].KnightCanAttack()
         return possibilities
     def moveManually(self, newRow, newColumn):
+        #moves the piece
         print("Knight from " , chessboard[self.row][self.column], " to ", chessboard[newRow][newColumn])
         isCapture = False
         if chessboard[newRow][newColumn].returnOccupant()!=0:
@@ -36,6 +38,7 @@ class Knight:
         self.column = newColumn
         return isCapture
     def tempMove(self, newRow, newColumn):
+        #moves the piece for the AI calculations
         self.oocc.append(chessboard[newRow][newColumn].returnOccupant())
         self.ppieces.append(chessboard[newRow][newColumn].piece)
         self.orow.append(self.row)
@@ -47,6 +50,7 @@ class Knight:
         self.row = newRow
         self.column = newColumn
     def moveBack(self):
+        #moves the piece back
         chessboard[self.row][self.column].setOccupant(self.oocc.pop())
         chessboard[self.row][self.column].piece = self.ppieces.pop()
         chessboard[self.orow[-1]][self.ocol[-1]].setOccupant(self.player)
@@ -199,6 +203,7 @@ class Rook:
         self.column = newColumn
         return isCapture
     def castleKingSide(self):
+        #for castling kingside
         if side == 0:
             if self.player == 1:
                 chessboard[self.row][self.column].setOccupant(0)
@@ -231,6 +236,7 @@ class Rook:
                 self.column = 2
         self.moved = 1
     def castleQueenSide(self):
+        #for castling queenside
         if side == 0:
             if self.player == 1:
                 chessboard[self.row][self.column].setOccupant(0)
@@ -263,6 +269,7 @@ class Rook:
                 self.column = 4
         self.moved = 1
     def hasMoved(self):
+        #determines whether the piece has moved
         if self.moved == 0:
             return False
         return True
@@ -301,8 +308,8 @@ class Pawn:
         self.ucol = 0
         self.uocc = 0
         self.tempEnPassant = []
-        self.movedTwo = False
-        self.tempMovedTwo = False
+        self.movedTwo = False #is true if the pawn has moved two spots on the last turn
+        self.tempMovedTwo = False #used for AI calculations
         chessboard[row][column].setOccupant(player)
         chessboard[row][column].piece = ID
     def getRow(self):
