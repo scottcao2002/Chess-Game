@@ -5,8 +5,8 @@ class Square:
     global PPlayer
     global side
     def __init__(self, row, column, occupant, piece = 0):
-        #Creates the row and column for each square. The occupant is 1 for the player and 2 for the opponent
-        #The piece variable contains the piece that is on the square
+        #Creates the row and column for each square. The occupant is 1 for the player and 2 for the opponent and 0 for default
+        #The piece variable contains the piece that is on the square (0 if no piece is there)
         self.r = row
         self.c = column
         self.occ = occupant
