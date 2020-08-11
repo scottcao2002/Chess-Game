@@ -1,3 +1,4 @@
+#creates opponent class without King's Indian Defense
 class Opponent:
     global chessboard
     global PPlayer
