@@ -1,10 +1,10 @@
 class Knight:
     global chessboard
     def __init__(self, row, column, player, ID):
-        self.row = row
-        self.column = column
-        self.player = player
-        self.ID = ID
+        self.row = row #contains the row for the piece
+        self.column = column #contains the column for the piece
+        self.player = player #contains the player (1 for the player, 2 for the opponent)
+        self.ID = ID #contains the ID of the piece
         self.orow = []
         self.ocol = []
         self.oocc = []
@@ -16,9 +16,11 @@ class Knight:
     def getColumn(self):
         return self.column
     def getPossibilities(self):
+        #returns the possibilities of where it can move
         possibilities = chessboard[self.row][self.column].KnightCanMove()
         return possibilities
-    def AllPossibilities(self):
+    def AttackPossibilities(self):
+        #returns the
         possibilities = chessboard[self.row][self.column].KnightCanAttack()
         return possibilities
     def moveManually(self, newRow, newColumn):
@@ -71,7 +73,7 @@ class Bishop:
     def getPossibilities(self):
         possibilities = chessboard[self.row][self.column].BishopCanMove()
         return possibilities
-    def AllPossibilities(self):
+    def AttackPossibilities(self):
         possibilities = chessboard[self.row][self.column].BishopCanAttack()
         return possibilities
     def moveManually(self, newRow, newColumn):
@@ -124,7 +126,7 @@ class Queen:
     def getPossibilities(self):
         possibilities = chessboard[self.row][self.column].QueenCanMove()
         return possibilities
-    def AllPossibilities(self):
+    def AttackPossibilities(self):
         possibilities = chessboard[self.row][self.column].QueenCanAttack()
         return possibilities
     def moveManually(self, newRow, newColumn):
@@ -180,7 +182,7 @@ class Rook:
     def getPossibilities(self):
         possibilities = chessboard[self.row][self.column].RookCanMove()
         return possibilities
-    def AllPossibilities(self):
+    def AttackPossibilities(self):
         possibilities = chessboard[self.row][self.column].RookCanAttack()
         return possibilities
     def moveManually(self, newRow, newColumn):
@@ -310,7 +312,7 @@ class Pawn:
     def getPossibilities(self):
         possibilities = chessboard[self.row][self.column].PawnCanMove()
         return possibilities
-    def AllPossibilities(self):
+    def AttackPossibilities(self):
         possibilities = chessboard[self.row][self.column].PawnCanAttack()
         return possibilities
     def moveManually(self, newRow, newColumn):
@@ -386,7 +388,7 @@ class playerKing:
     def getPossibilities(self):
         possibilities = chessboard[self.row][self.column].KingCanMove()
         return possibilities
-    def AllPossibilities(self):
+    def AttackPossibilities(self):
         return chessboard[self.row][self.column].KingCanAttack()
     def isInCheck(self):
         if chessboard[self.row][self.column].isAttackedByOpponent():
@@ -640,7 +642,7 @@ class opponentKing:
     def getPossibilities(self):
         possibilities = chessboard[self.row][self.column].KingCanMove()
         return possibilities
-    def AllPossibilities(self):
+    def AttackPossibilities(self):
         return chessboard[self.row][self.column].KingCanAttack()
     def moveManually(self, newRow, newColumn):
         print("King from " , chessboard[self.row][self.column], " to ", chessboard[newRow][newColumn])
