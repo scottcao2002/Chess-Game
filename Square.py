@@ -1,9 +1,11 @@
+#class for each square on the chessboard
 class Square:
     global chessboard
     global POpponent
     global PPlayer
     global side
     def __init__(self, row, column, occupant, piece = 0):
+        #Creates the row and column for each square. The occupant is 1 for the player and 2 for the opponent.
         self.r = row
         self.c = column
         self.occ = occupant
@@ -12,6 +14,7 @@ class Square:
         self.occ = occ
     def returnOccupant(self):
         return self.occ
+    #returns all squares a knight can move to
     def KnightCanMove(self):
         poss = []
         if self.r + 2 < 8 and self.c + 1 < 8 and chessboard[self.r + 2, self.c + 1].returnOccupant() != self.occ:
@@ -103,6 +106,7 @@ class Square:
             chessboard[self.r-1][self.c-2].setOccupant(temp2)
             self.occ = temp
         return poss
+    #returns all squares a knight can attack
     def KnightCanAttack(self):
         poss = []
         if self.r + 2 < 8 and self.c + 1 < 8:
@@ -122,6 +126,7 @@ class Square:
         if self.r - 1 >=0 and self.c - 2 >=0:
             poss.append([self.r-1, self.c -2])
         return poss
+    #returns all squares a bishop can move to
     def BishopCanMove(self):
         poss = []
         possRow = self.r + 1
@@ -193,6 +198,7 @@ class Square:
             possRow -= 1
             possColumn += 1
         return poss
+    #returns all squares a bishop can attack
     def BishopCanAttack(self):
         poss = []
         possRow = self.r + 1
@@ -228,6 +234,7 @@ class Square:
             possRow -= 1
             possColumn += 1
         return poss
+    #returns all squares a rook can move to
     def RookCanMove(self):
         poss = []
         possRow = self.r + 1
@@ -296,6 +303,7 @@ class Square:
             possColumn -= 1
             
         return poss
+    #returns all squares a rook can attack
     def RookCanAttack(self):
         poss = []
         possRow = self.r + 1
@@ -328,6 +336,7 @@ class Square:
             possColumn -= 1
             
         return poss
+    #returns all squares a queen can move to
     def QueenCanMove(self):
         poss = []
         possRow = self.r + 1
@@ -464,6 +473,7 @@ class Square:
             possColumn -= 1
             
         return poss
+    #returns all squares a queen can attack
     def QueenCanAttack(self):
         poss = []
         possRow = self.r + 1
@@ -527,7 +537,7 @@ class Square:
             possRow -= 1
             possColumn += 1
         return poss
-    
+    #returns all squares a pawn can move to
     def PawnCanMove(self):
         poss = []
         if self.occ == 2:
@@ -649,6 +659,7 @@ class Square:
                             poss.append([2, piece.getColumn()])
             return poss
         return poss
+    #returns all squares a pawn can attack
     def PawnCanAttack(self):
         poss = []
         if self.occ == 2:
@@ -671,6 +682,7 @@ class Square:
                 poss.append([possRow, possColumn])
         return poss
             
+    #returns all squares a king can move to
     def KingCanMove(self):
         poss = []
         if self.occ == 1:    
@@ -776,6 +788,7 @@ class Square:
                 else:
                     poss.append([0, 5])
         return poss
+    #returns all squares a king can attack
     def KingCanAttack(self):
         poss = []
         if self.r + 1 < 8 and self.c + 1 < 8:
@@ -795,19 +808,22 @@ class Square:
         if self.r + 1 < 8:
             poss.append([self.r+1, self.c])
         return poss
+    #returns whether or not the square is attacked by one of the player's pieces
     def isAttackedByPlayer(self):
         for piece in PPlayer.getAllPieces():
             for possibility in piece.AllPossibilities():
                 if possibility[0]== self.r and possibility[1] == self.c and chessboard[piece.getRow()][piece.getColumn()].returnOccupant() == 1:
                     return True
         return False
+    #returns whether or not the square is attacked by one of the opponent's pieces
     def isAttackedByOpponent(self):
         for piece in POpponent.getAllPieces():
             for possibility in piece.AllPossibilities():
                 if possibility[0]== self.r and possibility[1] == self.c and chessboard[piece.getRow()][piece.getColumn()].returnOccupant() == 2:
                     return True
         return False
-
+    
+    #prints the name of each square
     def __str__(self):
         if side == 0:
             last = str(8 - self.r)
