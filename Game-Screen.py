@@ -192,10 +192,8 @@ class Board:
 board = Board()
 def playBackground():
     #plays the background music
-    background = ["Background1.wav",
-                  "Background2.wav",
-                  "Background3.wav",
-                  "Background4.wav"]
+    background = ["Background2.wav",
+                  "Background3.wav"]
     infiles = []
     for i in range(0, 10):
         num = int(random.random()*len(background))
