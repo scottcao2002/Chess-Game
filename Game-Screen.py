@@ -1,4 +1,5 @@
 class screenButton:
+    #class for opening screen buttons
     def __init__(self, color, x, y, width, height, text = ''):
         self.color = color
         self.x = x
@@ -22,6 +23,7 @@ class screenButton:
 
 
 class Button:
+    #class for chessboard buttons
     def __init__(self, color, row, col, x, y, width, height):
         self.color = color
         self.originalColor = color
@@ -48,6 +50,7 @@ class Button:
 
 
 class Board:
+    #class for the onscreen chessboard
     def __init__(self):
         global win
         global chessboard
@@ -92,6 +95,7 @@ class Board:
     def getSquare(self, row, column):
         return self.board[row][column]
     def drawPiece(self, win, r, c, locx, locy):
+        #draws the piece on that square
         if side == 0:
             if chessboard[r][c].returnOccupant() == 1:
                 for piece in PPlayer.getAllPieces():
@@ -160,6 +164,7 @@ class Board:
                         break
         return
     def draw(self):
+        #draws the board
         if PPlayer.getKing().isInCheck():
             board.board[PPlayer.getKing().getRow()][PPlayer.getKing().getColumn()].setColor((255, 0, 0))
         if POpponent.getKing().isInCheck():
@@ -169,12 +174,14 @@ class Board:
                 self.board[i][k].draw(win)
                 self.drawPiece(win, i, k, self.board[i][k].getX(), self.board[i][k].getY())
     def clear(self):
+        #clears it back to normal except for opponent move shadows
         for i in range(0, len(self.board)):
             for k in range(0, len(self.board[i])):
                 if self.board[i][k].state == 1 or self.board[i][k].state == 2:
                     self.board[i][k].setColor(self.board[i][k].originalColor)
                     self.board[i][k].state = 0
     def completelyClear(self):
+        #completely clears it back to normal
         for i in range(0, len(self.board)):
             for k in range(0, len(self.board[i])):
                 self.board[i][k].setColor(self.board[i][k].originalColor)
@@ -184,6 +191,7 @@ class Board:
     
 board = Board()
 def playBackground():
+    #plays the background music
     background = ["Background1.wav",
                   "Background2.wav",
                   "Background3.wav",
@@ -206,6 +214,7 @@ def playBackground():
     pygame.mixer.music.load("Background.wav")
     pygame.mixer.music.play(-1)
 def playSound():
+    #plays the meme music
     songs = [pygame.mixer.Sound('Fail.wav'), 
              pygame.mixer.Sound('FBI.wav'), 
              pygame.mixer.Sound('Fine.wav'), 
@@ -237,6 +246,7 @@ def playSound():
     songs[num].play()
 
 def playerMoves():
+    #function for the player to move
     global board
     global chessboard
     global PPlayer
@@ -295,6 +305,7 @@ def playerMoves():
                                             board.state = 1
                                         break
 def opponentMoves():
+    #function for the opponent to move
     global board
     global chessboard
     global PPlayer
@@ -364,6 +375,7 @@ def opponentMoves():
                                                 board.state = 1
                                             break
 def promotePiece():
+    #creates promotion buttons
     global PPlayer
     global POpponent
     global win
@@ -410,12 +422,14 @@ def promotePiece():
     return a
 
 def redrawWindow():
+    #creates game window
     global win
     global board
     win.fill((0, 160, 0))
     board.draw()
     pygame.display.update()
 def redrawBeginningWindow():
+    #creates window to choose white or black pieces
     global onePlayer
     win.fill((64, 224, 208))
     if onePlayer:
@@ -428,6 +442,7 @@ def redrawBeginningWindow():
     buttonWhite.draw(win)
     buttonBlack.draw(win)
 def redrawPlayerWindow():
+    #creates window to choose 1 or two player
     win.fill((64, 224, 208))
     onePlayerButton.draw(win)
     twoPlayerButton.draw(win)
