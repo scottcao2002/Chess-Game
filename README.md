@@ -8,7 +8,7 @@ All of the files must be run in order for the game to work (with the exception o
 
 
 # Playing the game
-This game includes classical background music, along with meme sounds on every move(just to keep things entertaining). It opens with a choice of 1 or 2 player. The next screen
+This game includes classical background music, along with meme sounds on every move (just to keep things entertaining). It opens with a choice of 1 or 2 player. The next screen
 asks if you want the white or black pieces. For the one player game, the AI uses a minimax algorithm, with a default depth of 2. The algorithm includes alpha-beta pruning. Clicking
 on any of your pieces on your turn will highlight the piece, and the spaces where that piece can move is also highlighted in blue. In 1 player mode, the opponent's previous move is
 highlighted in purple. If a king is in check, it is highlighted in red. Each move (with the move number) is printed as the output in case you want to go back and check your previous
