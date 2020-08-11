@@ -812,14 +812,14 @@ class Square:
     #returns whether or not the square is attacked by one of the player's pieces
     def isAttackedByPlayer(self):
         for piece in PPlayer.getAllPieces():
-            for possibility in piece.AllPossibilities():
+            for possibility in piece.AttackPossibilities():
                 if possibility[0]== self.r and possibility[1] == self.c and chessboard[piece.getRow()][piece.getColumn()].returnOccupant() == 1:
                     return True
         return False
     #returns whether or not the square is attacked by one of the opponent's pieces
     def isAttackedByOpponent(self):
         for piece in POpponent.getAllPieces():
-            for possibility in piece.AllPossibilities():
+            for possibility in piece.AttackPossibilities():
                 if possibility[0]== self.r and possibility[1] == self.c and chessboard[piece.getRow()][piece.getColumn()].returnOccupant() == 2:
                     return True
         return False
