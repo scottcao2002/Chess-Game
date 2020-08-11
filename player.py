@@ -1,11 +1,13 @@
 #creates class for the player
 class HumanPlayer:
+    #creates your player
     global chessboard
     global POpponent
     global side
     global opponentTurn
     global playerTurn
     def __init__(self):
+        #initializes all your pieces
         self.P1 = Pawn(6, 0, 1, 1)
         self.P2 = Pawn(6, 1, 1, 2)
         self.P3 = Pawn(6, 2, 1, 3)
@@ -34,6 +36,7 @@ class HumanPlayer:
     def getKing(self):
         return self.K
     def canMove(self):
+        #returns 0 for stalemate, -1 for checkmate, 1 if you can still move
         for piece in self.allPieces:
             if chessboard[piece.getRow()][piece.getColumn()].returnOccupant() == 1:
                 if len(piece.getPossibilities()) != 0:
@@ -43,6 +46,7 @@ class HumanPlayer:
         else:
             return -1
     def makesMove(self, pr, pc, nr, nc):
+        #makes the move for the player
         for piece in self.allPieces:
             if type(piece) is Pawn:
                 piece.movedTwo = False
@@ -81,11 +85,13 @@ class HumanPlayer:
                         break
                 POpponent.setAllPieces(OpponentPieces)
     def canPromote(self):
+        #determines whether a pawn can promote
         for piece in self.allPieces:
             if type(piece) is Pawn and piece.getRow() == 0:
                 return True
         return False
     def promote(self, num):
+        #promotes the pawn
         for piece in self.allPieces:
             if type(piece) is Pawn and piece.getRow() == 0:
                 movingPiece = piece
@@ -103,6 +109,7 @@ class HumanPlayer:
             print("Pawn promotes to Rook")
         self.allPieces.remove(movingPiece)
     def canCastleKingSide(self):
+        #determines whether kingside castling is possible
         if side == 0:
             if not self.R2.hasMoved() and not self.K.hasMoved() and not self.K.isInCheck() and not self.R2.tempMoved and not self.K.tempMoved:
                 if not chessboard[7][5].isAttackedByOpponent() and not chessboard[7][6].isAttackedByOpponent():
@@ -120,6 +127,7 @@ class HumanPlayer:
                                 return True
             return False
     def canCastleQueenSide(self):
+        #determines whether queenside castling is possible
         if side == 0:
             if not self.R1.hasMoved() and not self.K.hasMoved() and not self.K.isInCheck() and not self.R1.tempMoved and not self.K.tempMoved:
                 if not chessboard[7][2].isAttackedByOpponent() and not chessboard[7][3].isAttackedByOpponent():
@@ -137,6 +145,7 @@ class HumanPlayer:
                                 return True
             return False
     def castleKingSide(self):
+        #to castle kingside
         if side == 0:
             self.K.castleKingSide()
             self.R2.castleKingSide()
@@ -144,6 +153,7 @@ class HumanPlayer:
             self.K.castleKingSide()
             self.R1.castleKingSide()
     def castleQueenSide(self):
+        #to castle queenside
         if side == 0:
             self.K.castleQueenSide()
             self.R1.castleQueenSide()
