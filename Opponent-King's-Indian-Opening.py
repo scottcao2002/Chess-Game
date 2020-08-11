@@ -1,3 +1,4 @@
+#creates class for opponent
 class Opponent:
     global chessboard
     global PPlayer
@@ -34,6 +35,7 @@ class Opponent:
     def setAllPieces(self, pieces):
         self.allPieces = pieces
     def makesMove(self, lr = 0, lc = 0, cr = 0, cc = 0):
+        #makes move for the opponent, AI opens with King's Indian defense
         for piece in self.allPieces:
             if type(piece) is Pawn:
                 piece.movedTwo = False
@@ -264,6 +266,7 @@ class Opponent:
             print("Pawn promotes to Rook")
         self.allPieces.remove(movingPiece)
     def getScore(self):
+        #returns the score of the opponent's position for the AI
         if POpponent.canMove() == -1:
             return -maxsize
         elif PPlayer.canMove() == -1:
