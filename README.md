@@ -20,7 +20,7 @@ minimax.py
 
 player.py
 
-opponent-King's-Indian-Opening.py or opponent-No-Openings.py
+opponent-King's-Indian-Opening.py OR opponent-No-Openings.py
 
 game-screen.py
 
