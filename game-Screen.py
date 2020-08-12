@@ -276,6 +276,8 @@ def playerMoves():
                                             playSound()
                                             playerTurn = False
                                             opponentTurn = True
+                                            tempPlayerTurn = False
+                                            tempOpponentTurn = True
                             elif chessboard[i][k].returnOccupant() == 1:
                                 board.clear()
                                 for piece in PPlayer.getAllPieces():
@@ -346,6 +348,8 @@ def opponentMoves():
                                                 playSound()
                                                 playerTurn = True
                                                 opponentTurn = False
+                                                tempPlayerTurn = True
+                                                tempOpponentTurn = False
                                 elif chessboard[i][k].returnOccupant() == 2:
                                     board.clear()
                                     for piece in POpponent.getAllPieces():
