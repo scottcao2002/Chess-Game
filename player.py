@@ -111,40 +111,32 @@ class HumanPlayer:
             print("Pawn promotes to Rook")
         self.allPieces.remove(movingPiece)
     def canCastleKingSide(self):
-        #determines whether kingside castling is possible
+        #determines whether castling kingside is possible
         if side == 0:
             if not self.R2.hasMoved() and not self.K.hasMoved() and not self.K.isInCheck() and not self.R2.tempMoved and not self.K.tempMoved:
                 if not chessboard[7][5].isAttackedByOpponent() and not chessboard[7][6].isAttackedByOpponent():
-                    if chessboard[7][5].returnOccupant() == 0 and chessboard[7][6].returnOccupant() == 0 and chessboard[7][7].returnOccupant()==1:
-                        for piece in self.allPieces:
-                            if piece.getRow() == 7 and piece.getColumn() == 7 and not piece.hasMoved() and not piece.tempMoved:
-                                return True
+                    if chessboard[7][5].returnOccupant() == 0 and chessboard[7][6].returnOccupant() == 0 and chessboard[7][7].piece==self.R2.ID:
+                        return True
             return False
         else:
             if not self.R1.hasMoved() and not self.K.hasMoved() and not self.K.isInCheck() and not self.R1.tempMoved and not self.K.tempMoved:
                 if not chessboard[7][2].isAttackedByOpponent() and not chessboard[7][1].isAttackedByOpponent():
-                    if chessboard[7][2].returnOccupant() == 0 and chessboard[7][1].returnOccupant() == 0 and chessboard[7][0].returnOccupant() == 1:
-                        for piece in self.allPieces:
-                            if type(piece) is Rook and piece.getRow() == 7 and piece.getColumn() == 0 and not piece.hasMoved() and not piece.tempMoved:
-                                return True
+                    if chessboard[7][2].returnOccupant() == 0 and chessboard[7][1].returnOccupant() == 0 and chessboard[7][0].piece == self.R1.ID:
+                        return True
             return False
     def canCastleQueenSide(self):
-        #determines whether queenside castling is possible
+        #determines whether castline queenside is possible
         if side == 0:
             if not self.R1.hasMoved() and not self.K.hasMoved() and not self.K.isInCheck() and not self.R1.tempMoved and not self.K.tempMoved:
                 if not chessboard[7][2].isAttackedByOpponent() and not chessboard[7][3].isAttackedByOpponent():
-                    if chessboard[7][2].returnOccupant() == 0 and chessboard[7][3].returnOccupant() == 0 and chessboard[7][0].returnOccupant() == 1:
-                        for piece in self.allPieces:
-                            if type(piece) is Rook and piece.getRow() == 7 and piece.getColumn() == 0 and not piece.hasMoved() and not piece.tempMoved:
-                                return True
+                    if chessboard[7][2].returnOccupant() == 0 and chessboard[7][3].returnOccupant() == 0 and chessboard[7][0].piece == self.R1.ID:
+                        return True
             return False
         else:
             if not self.R2.hasMoved() and not self.K.hasMoved() and not self.K.isInCheck() and not self.R2.tempMoved and not self.K.tempMoved:
                 if not chessboard[7][4].isAttackedByOpponent() and not chessboard[7][5].isAttackedByOpponent():
-                    if chessboard[7][4].returnOccupant() == 0 and chessboard[7][5].returnOccupant() == 0 and chessboard[7][0].returnOccupant() == 1:
-                        for piece in self.allPieces:
-                            if type(piece) is Rook and piece.getRow() == 7 and piece.getColumn() == 7 and not piece.hasMoved() and not piece.tempMoved:
-                                return True
+                    if chessboard[7][4].returnOccupant() == 0 and chessboard[7][5].returnOccupant() == 0 and chessboard[7][7].piece == self.R2.ID:
+                        return True
             return False
     def castleKingSide(self):
         #to castle kingside
