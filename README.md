@@ -38,4 +38,4 @@ moves and/or mistakes.
 
 # Background music
 Unfortunately, the Background1 and Background4 files were too big to include on Github. However, if you wanted to add your own music, you just have to add their names to the array
-titled "background" under the function playBackground(). To eliminate the sounds, you can delete the playSound() function found in the functions playerMoves() and opponentMoves() of the file game-Screen.py and the playBackground() function that is created in the file game-Screen.py and executed in the file play-Game.py
+titled "background" under the function playBackground(). To eliminate the sounds, you can delete the playSound() function executed in the functions playerMoves() and opponentMoves() of the file game-Screen.py and you can delete the playBackground() function that is created in the file game-Screen.py and executed in the file play-Game.py
