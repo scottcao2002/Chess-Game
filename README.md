@@ -6,6 +6,26 @@ The game is played on an 8x8 square, with each side having 16 pieces. The game e
 # How to run the project
 All of the files must be run in order for the game to work (with the exception of the opponent class. You may choose whether you want the opponent AI to play the King's Indian Defense or no premade opening). This chess game uses the pygame library. The music and picture files must be in the same folder as the files containing the code.
 
+The following files should be run:
+
+initialization.py
+
+square.py
+
+chessboard.py
+
+pieces.py
+
+minimax.py
+
+player.py
+
+opponent-King's-Indian-Opening.py or opponent-No-Openings.py
+
+game-screen.py
+
+play-Game.py
+
 
 # Playing the game
 This game includes classical background music, along with meme sounds on every move (just to keep things entertaining). It opens with a choice of 1 or 2 player. The next screen
