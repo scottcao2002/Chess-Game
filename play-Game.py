@@ -65,9 +65,13 @@ moves = 0
 if side == 0:
     playerTurn = True
     opponentTurn = False
+    tempPlayerTurn = True
+    tempOpponentTurn = False
 else:
     playerTurn = False
     opponentTurn = True
+    tempPlayerTurn = False
+    tempOpponentTurn = True
 while run:
     if playerTurn:
         redrawWindow()
