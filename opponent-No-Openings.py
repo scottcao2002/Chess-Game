@@ -7,6 +7,8 @@ class Opponent:
     global onePlayer
     global opponentTurn
     global playerTurn
+    global tempPlayerTurn
+    global tempOpponentTurn
     global moves
     def __init__(self):
         self.P1 = Pawn(1, 0, 2, 17)
@@ -46,8 +48,12 @@ class Opponent:
             for piece in self.allPieces:
                 for possibility in piece.getPossibilities():
                     piece.tempMove(possibility[0],possibility[1])
+                    tempPlayerTurn = True
+                    tempOpponentTurn = False
                     score = minimax(depth, -maxsize - 1, maxsize + 1, False)
                     piece.moveBack()
+                    tempPlayerTurn = False
+                    tempOpponentTurn = True
                     if score > bestScore:
                         bestScore = score
                         bestMove = [[piece.getRow(), piece.getColumn(), possibility[0], possibility[1]]]
@@ -133,7 +139,7 @@ class Opponent:
             if chessboard[piece.getRow()][piece.getColumn()].returnOccupant() == 2:
                 if len(piece.getPossibilities()) != 0:
                     return 1
-        if not self.K.isInCheck() and opponentTurn:
+        if not self.K.isInCheck() and (opponentTurn or tempOpponentTurn):
             return 0
         else:
             return -1
