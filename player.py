@@ -6,6 +6,8 @@ class HumanPlayer:
     global side
     global opponentTurn
     global playerTurn
+    global tempPlayerTurn
+    global tempOpponentTurn
     def __init__(self):
         #initializes all your pieces
         self.P1 = Pawn(6, 0, 1, 1)
@@ -41,7 +43,7 @@ class HumanPlayer:
             if chessboard[piece.getRow()][piece.getColumn()].returnOccupant() == 1:
                 if len(piece.getPossibilities()) != 0:
                     return 1
-        if not self.K.isInCheck() and playerTurn:
+        if not self.K.isInCheck() and (playerTurn or tempPlayerTurn):
             return 0
         else:
             return -1
