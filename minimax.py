@@ -39,8 +39,12 @@ def minimax(depth, alpha, beta, isComputer):
                 if len(piece.getPossibilities()) > 0:
                     for possibility in piece.getPossibilities():
                         piece.tempMove(possibility[0], possibility[1])
+                        tempPlayerTurn = False
+                        tempOpponentTurn = True
                         score = minimax(depth - 1, alpha, beta, True)
                         piece.moveBack()
+                        tempPlayerTurn = True
+                        tempOpponentTurn = False
                         bestScore = min(score, bestScore)
                         beta = min(score, beta)
                         if beta <= alpha:
