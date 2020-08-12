@@ -147,35 +147,27 @@ class Opponent:
         if side == 0:
             if not self.R2.hasMoved() and not self.K.hasMoved() and not self.K.isInCheck() and not self.R2.tempMoved and not self.K.tempMoved:
                 if not chessboard[0][5].isAttackedByPlayer() and not chessboard[0][6].isAttackedByPlayer():
-                    if chessboard[0][5].returnOccupant() == 0 and chessboard[0][6].returnOccupant() == 0 and chessboard[0][7].returnOccupant() == 2:
-                        for piece in self.allPieces:
-                            if type(piece) is Rook and piece.getRow() == 0 and piece.getColumn() == 7 and not piece.hasMoved() and not piece.tempMoved:
-                                return True
+                    if chessboard[0][5].returnOccupant() == 0 and chessboard[0][6].returnOccupant() == 0 and chessboard[0][7].piece == self.R2.ID:
+                        return True
             return False
         else:
             if not self.R1.hasMoved() and not self.K.hasMoved() and not self.K.isInCheck() and not self.R1.tempMoved and not self.K.tempMoved:
                 if not chessboard[0][2].isAttackedByPlayer() and not chessboard[0][1].isAttackedByPlayer():
-                    if chessboard[0][2].returnOccupant() == 0 and chessboard[0][1].returnOccupant() == 0 and chessboard[0][0].returnOccupant() == 2:
-                        for piece in self.allPieces:
-                            if type(piece) is Rook and piece.getRow() == 0 and piece.getColumn() == 0 and not piece.hasMoved() and not piece.tempMoved:
-                                return True
+                    if chessboard[0][2].returnOccupant() == 0 and chessboard[0][1].returnOccupant() == 0 and chessboard[0][0].piece == self.R1.ID:
+                        return True
             return False
     def canCastleQueenSide(self):
         if side == 0:
             if not self.R1.hasMoved() and not self.K.hasMoved() and not self.K.isInCheck() and not self.R1.tempMoved and not self.K.tempMoved:
                 if not chessboard[0][2].isAttackedByPlayer() and not chessboard[0][3].isAttackedByPlayer():
-                    if chessboard[0][2].returnOccupant() == 0 and chessboard[0][3].returnOccupant() == 0 and chessboard[0][0].returnOccupant() == 2:
-                        for piece in self.allPieces:
-                            if type(piece) is Rook and piece.getRow() == 0 and piece.getColumn() == 0 and not piece.hasMoved() and not piece.tempMoved:
-                                return True
+                    if chessboard[0][2].returnOccupant() == 0 and chessboard[0][3].returnOccupant() == 0 and chessboard[0][0].piece == self.R1.ID:
+                        return True
             return False
         else:
             if not self.R2.hasMoved() and not self.K.hasMoved() and not self.K.isInCheck() and not self.R2.tempMoved and not self.K.tempMoved:
                 if not chessboard[0][5].isAttackedByPlayer() and not chessboard[0][4].isAttackedByPlayer():
-                    if chessboard[0][5].returnOccupant() == 0 and chessboard[0][4].returnOccupant() == 0 and chessboard[0][7].returnOccupant() == 2:
-                        for piece in self.allPieces:
-                            if type(piece) is Rook and piece.getRow() == 0 and piece.getColumn() == 7 and not piece.hasMoved() and not piece.tempMoved:
-                                return True
+                    if chessboard[0][5].returnOccupant() == 0 and chessboard[0][4].returnOccupant() == 0 and chessboard[0][7].piece == self.R2.ID:
+                        return True
             return False
     def castleKingSide(self):
         if side == 0:
